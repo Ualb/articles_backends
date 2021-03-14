@@ -33,20 +33,20 @@ class TestView(APITestCase):
             '/api/articles/')
         self.assertEqual(response.status_code, status.HTTP_200_OK)
 
-    # def test_update_article(self):
-    #     self.create_article()
-    #     article_upgrade = {
-    #         'code': '0001A',
-    #         'description': 'I Love Programmer in Python',
-    #         'price': 50.5,
-    #         'cost': 23.2
-    #     }
-    #     response = self.api_client.put(
-    #         '/api/articles/', article_upgrade, format='json')
-    #     self.assertEqual(response.status_code, status.HTTP_200_OK)
+    def test_update_article(self):
+        self.create_article()
+        article_upgrade = {
+            'code': '0001A',
+            'description': 'I Love Programmer in Python',
+            'price': 50.5,
+            'cost': 23.2
+        }
+        response = self.api_client.put(
+            '/api/articles/1/', article_upgrade, format='json')
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
 
-    # def test_delete_article(self):
-    #     self.create_article()
-    #     response = self.api_client.delete(
-    #         '/api/articles/', {'code': '0001A'}, format='json')
-    #     self.assertEqual(response.status_code, status.HTTP_200_OK)
+    def test_delete_article(self):
+        self.create_article()
+        response = self.api_client.delete(
+            '/api/articles/1/', {'code': '0001A'}, format='json')
+        self.assertEqual(response.status_code, status.HTTP_204_NO_CONTENT)

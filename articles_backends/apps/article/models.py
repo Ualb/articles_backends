@@ -2,7 +2,8 @@ from django.db import models
 
 
 class Article(models.Model):
-    code = models.CharField(primary_key=True, max_length=30)
+    id = models.AutoField(primary_key=True)
+    code = models.CharField(max_length=30, unique=True)
     description = models.CharField(max_length=50)
     price = models.DecimalField(max_digits=10, decimal_places=2)
     cost = models.DecimalField(max_digits=10, decimal_places=2)
