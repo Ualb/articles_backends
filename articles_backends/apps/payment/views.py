@@ -16,8 +16,8 @@ class PaymentView(viewsets.ModelViewSet):
 
     def create(self, request):
         if payment_validator(request.data):
-            if save_payment(request.data):
-                return Response(
-                    PaymentSerializer(
-                        payment).data, status=status.HTTP_201_CREATED
-                )
+            payment = save_payment(request.data)
+            return Response(
+                PaymentSerializer(
+                    payment).data, status=status.HTTP_201_CREATED
+            )

@@ -20,7 +20,8 @@ class PaymentDetailSerializer(serializers.ModelSerializer):
 
 
 class PaymentSerializer(serializers.ModelSerializer):
-    payment_detail = PaymentDetailSerializer(many=True)
+    payment_detail = PaymentDetailSerializer(
+        many=True, allow_null=True)
 
     class Meta:
         model = Payment
