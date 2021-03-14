@@ -5,6 +5,7 @@ from .models import Payment
 from .serializer import PaymentSerializer
 from .constraints import payment_validator
 from apps.payment.logic.payment import save_payment
+from apps.common.paginator import DefaultPagination
 
 
 class PaymentView(viewsets.ModelViewSet):
@@ -13,6 +14,7 @@ class PaymentView(viewsets.ModelViewSet):
     filter_backends = [filters.SearchFilter]
     search_fields = ['date']
     http_method_names = ['get', 'post']
+    pagination_class = DefaultPagination
 
     def create(self, request):
         if payment_validator(request.data):
