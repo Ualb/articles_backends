@@ -40,6 +40,8 @@ INSTALLED_APPS = [
 
     # drf
     'rest_framework',
+    # for the swagger
+    'drf_yasg',
 
     # our apps
     'apps.article',
